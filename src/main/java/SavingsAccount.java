@@ -18,4 +18,24 @@ public class SavingsAccount extends Account {
 	public void withdraw(double amount) {
 		super.withdraw(amount);
 	}
+
+	@Override
+	public boolean isCertificateDeposit() {
+		return false;
+	}
+
+	@Override
+	public boolean isSavingsAccount() {
+		return true;
+	}
+
+	@Override
+	public boolean isCheckingAccount() {
+		return false;
+	}
+
+	@Override
+	public double maxDepositAmount() {
+		return 2500;
+	}
 }

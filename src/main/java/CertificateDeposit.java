@@ -24,4 +24,24 @@ public class CertificateDeposit extends Account {
 	public double getAPR() {
 		return super.getAPR();
 	}
+
+	@Override
+	public boolean isCertificateDeposit() {
+		return true;
+	}
+
+	@Override
+	public boolean isCheckingAccount() {
+		return false;
+	}
+
+	@Override
+	public boolean isSavingsAccount() {
+		return false;
+	}
+
+	@Override
+	public double maxDepositAmount() {
+		return 0;
+	}
 }
