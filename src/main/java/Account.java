@@ -35,4 +35,11 @@ public abstract class Account {
 		return accountID;
 	}
 
+	public abstract boolean isCertificateDeposit();
+
+	public abstract boolean isCheckingAccount();
+
+	public abstract boolean isSavingsAccount();
+
+	public abstract double maxDepositAmount();
 }
