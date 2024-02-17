@@ -74,8 +74,4 @@ public class ValidateCreateAccountCommand {
 	private boolean isValidCDAmount(double initialAmount) {
 		return initialAmount >= 1000 && initialAmount <= 10000;
 	}
-
-	private boolean isValidAccountType(String accountType) {
-		return accountType.equals("checking") || accountType.equals("savings") || accountType.equals("cd");
-	}
 }
