@@ -31,16 +31,6 @@ public class CertificateDeposit extends Account {
 	}
 
 	@Override
-	public boolean isCheckingAccount() {
-		return false;
-	}
-
-	@Override
-	public boolean isSavingsAccount() {
-		return false;
-	}
-
-	@Override
 	public double maxDepositAmount() {
 		return 0;
 	}

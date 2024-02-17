@@ -25,16 +25,6 @@ public class SavingsAccount extends Account {
 	}
 
 	@Override
-	public boolean isSavingsAccount() {
-		return true;
-	}
-
-	@Override
-	public boolean isCheckingAccount() {
-		return false;
-	}
-
-	@Override
 	public double maxDepositAmount() {
 		return 2500;
 	}
