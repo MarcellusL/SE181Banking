@@ -1,5 +1,4 @@
 public class CommandValidator {
-	private Bank bank;
 	private ValidateCreateAccountCommand validateCreateAccountCommand;
 	private ValidateDepositCommand validateDepositCommand;
 
