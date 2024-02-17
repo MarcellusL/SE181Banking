@@ -73,4 +73,5 @@ public class ValidateCreateAccountCommandTest {
 		String[] commandWords = { "createAccount", "savings", "12369" };
 		assertFalse(createAccountValidator.validate(commandWords));
 	}
+	//
 }
