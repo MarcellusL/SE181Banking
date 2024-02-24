@@ -1,9 +1,10 @@
-public class ValidateCreateAccountCommand {
+public class ValidateCreateAccountCommand extends CommandValidator {
 
-	private Bank bank;
+	// private Bank bank;
 
 	public ValidateCreateAccountCommand(Bank bank) {
-		this.bank = bank;
+
+		super(bank);
 	}
 
 	public boolean validate(String[] commandWords) {
@@ -40,12 +41,11 @@ public class ValidateCreateAccountCommand {
 			return false;
 		}
 
-		return bank.getAccountUsingId(accountId) == null && isValidAccountId(accountId) && isValidAPR(apr);
+		return getBank().getAccountUsingId(accountId) == null && isValidAccountId(accountId) && isValidAPR(apr);
 	}
 
 	private boolean validateCertificateDeposit(String[] commandWords) {
 		if (commandWords.length != 5) {
-			;
 			return false;
 		}
 		String accountId = commandWords[2];
@@ -59,7 +59,7 @@ public class ValidateCreateAccountCommand {
 			return false;
 		}
 
-		return bank.getAccountUsingId(accountId) == null && isValidAccountId(accountId) && isValidAPR(apr)
+		return getBank().getAccountUsingId(accountId) == null && isValidAccountId(accountId) && isValidAPR(apr)
 				&& isValidCDAmount(initialAmount);
 	}
 

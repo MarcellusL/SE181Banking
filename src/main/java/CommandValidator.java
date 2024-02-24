@@ -1,27 +1,27 @@
 public class CommandValidator {
-	private ValidateCreateAccountCommand validateCreateAccountCommand;
-	private ValidateDepositCommand validateDepositCommand;
+	private Bank bank;
 
 	public CommandValidator(Bank bank) {
-		validateCreateAccountCommand = new ValidateCreateAccountCommand(bank);
-		validateDepositCommand = new ValidateDepositCommand(bank);
+		this.bank = bank;
+	}
+
+	public Bank getBank() {
+		return bank;
 	}
 
 	public boolean validate(String command) {
 		String[] words = command.split(" ");
 		String action = words[0].toLowerCase();
 
-		return validateCommand(action, words);
-	}
-
-	public boolean validateCommand(String action, String[] words) {
 		switch (action) {
 		case "create":
-			return validateCreateAccountCommand.validate(words);
+			return new ValidateCreateAccountCommand(bank).validate(words);
 
 		case "deposit":
-			return validateDepositCommand.validate(words);
+			return new ValidateDepositCommand(bank).validate(words);
+
+		default:
+			return false;
 		}
-		return false;
 	}
 }

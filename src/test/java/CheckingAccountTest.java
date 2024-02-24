@@ -57,7 +57,6 @@ public class CheckingAccountTest {
 
 	@Test
 	void supplied_apr_value() {
-
 		assertEquals(7.9, checkingAccount.getAPR());
 	}
 

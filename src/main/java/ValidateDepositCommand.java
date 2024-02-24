@@ -1,8 +1,9 @@
-public class ValidateDepositCommand {
-	private Bank bank;
+public class ValidateDepositCommand extends CommandValidator {
+	// private Bank bank;
 
 	public ValidateDepositCommand(Bank bank) {
-		this.bank = bank;
+
+		super(bank);
 	}
 
 	public boolean validate(String[] commandWords) {
@@ -19,7 +20,7 @@ public class ValidateDepositCommand {
 			return false;
 		}
 
-		Account account = bank.getAccountUsingId(accountId);
+		Account account = getBank().getAccountUsingId(accountId);
 		if (account == null) {
 			return false;
 		}
