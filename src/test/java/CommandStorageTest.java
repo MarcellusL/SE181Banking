@@ -48,7 +48,11 @@ public class CommandStorageTest {
 		commandStorage.addInvalidCommand("deposit 12345678");
 		commandStorage.addInvalidCommand("deposit 12345678 -100");
 		commandStorage.addInvalidCommand("deposit 123456789 100");
-		assertEquals(4, commandStorage.getInvalidCommands().size());
+		commandStorage.addInvalidCommand("deposit 54322183 one hundred");
+		commandStorage.addInvalidCommand("deposit 99999999 💵");
+		commandStorage.addInvalidCommand("place 43204320 250");
+		commandStorage.addInvalidCommand("dposit 21344201 100");
+		assertEquals(8, commandStorage.getInvalidCommands().size());
 
 	}
 }
