@@ -10,7 +10,7 @@ public class CommandStorage {
 	}
 
 	public void addInvalidCommand(String command) {
-		this.invalidCommands = new ArrayList<>();
+		this.invalidCommands.add(command);
 	}
 
 	public List<String> getInvalidCommands() {
