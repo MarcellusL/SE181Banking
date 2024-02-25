@@ -8,8 +8,7 @@ public class DepositCommandProcessor implements CommandProcessorBase {
 	@Override
 	public void process(String[] commandParts) {
 		if (commandParts.length != 3) {
-			System.out.println("Invalid deposit command. Usage: deposit <accountID> <amount>");
-			return;
+			throw new NumberFormatException("Invalid deposit command. Usage: deposit <accountID> <amount>");
 		}
 
 		String accountId = commandParts[1];
@@ -18,13 +17,11 @@ public class DepositCommandProcessor implements CommandProcessorBase {
 		try {
 			depositAmount = Double.parseDouble(commandParts[2]);
 		} catch (NumberFormatException e) {
-			System.out.println("Invalid deposit amount format.");
-			return;
+			throw new NumberFormatException("Invalid deposit amount format.");
 		}
 		Account account = bank.getAccountUsingId(accountId);
 		if (account == null) {
-			System.out.println("Account not found for deposit");
-			return;
+			throw new NullPointerException("Account not found for deposit");
 		}
 		account.deposit(depositAmount);
 
