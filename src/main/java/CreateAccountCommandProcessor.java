@@ -9,8 +9,11 @@ public class CreateAccountCommandProcessor implements CommandProcessorBase {
 	public void process(String[] commandParts) {
 
 		if (commandParts.length != 4 && commandParts.length != 5) {
-			System.out.println("Invalid create command. Usage: create <accountType> <accountID> <APR> [initialAmount]");
-			return;
+			throw new NumberFormatException(
+					"Invalid create command. Usage: create <accountType> <accountID> <APR> [initialAmount]");
+			// System.out.println("Invalid create command. Usage: create <accountType>
+			// <accountID> <APR> [initialAmount]");
+			// return;
 		}
 
 		String accountType = commandParts[1].toLowerCase();
