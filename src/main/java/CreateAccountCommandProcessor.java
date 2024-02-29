@@ -23,8 +23,9 @@ public class CreateAccountCommandProcessor implements CommandProcessorBase {
 		try {
 			apr = Double.parseDouble(commandParts[3]);
 		} catch (NumberFormatException e) {
-			System.out.println("Invalid APR format.");
-			return;
+			throw new NumberFormatException("Invalid APR format.");
+			// System.out.println("Invalid APR format.");
+			// return;
 		}
 
 		if (commandParts.length == 5) {
@@ -33,13 +34,17 @@ public class CreateAccountCommandProcessor implements CommandProcessorBase {
 			try {
 				initialAmount = Double.parseDouble(commandParts[4]);
 			} catch (NumberFormatException e) {
-				System.out.println("Invalid initialAmount format.");
-				return;
+				throw new NumberFormatException("Invalid initialAmount format.");
+				// System.out.println("Invalid initialAmount format.");
+				// return;
 			}
 
 			if (!isValidCDAmount(initialAmount)) {
-				System.out.println("Invalid initialAmount. Should be between 1000 and 10000 for CD accounts.");
-				return;
+				throw new NumberFormatException(
+						"Invalid initialAmount. Should be between 1000 and 10000 for CD accounts.");
+				// System.out.println("Invalid initialAmount. Should be between 1000 and 10000
+				// for CD accounts.");
+				// return;
 			}
 		}
 

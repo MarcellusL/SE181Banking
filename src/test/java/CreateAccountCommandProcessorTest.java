@@ -1,4 +1,5 @@
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,7 +21,6 @@ public class CreateAccountCommandProcessorTest {
 		createAccountCommandProcessor.process(commandParts);
 
 		Account account = bank.getAccountUsingId("12345678");
-		assertNotNull(account);
 		assertTrue(account instanceof CheckingAccount);
 	}
 
@@ -30,7 +30,6 @@ public class CreateAccountCommandProcessorTest {
 		createAccountCommandProcessor.process(commandParts);
 
 		Account account = bank.getAccountUsingId("98765432");
-		assertNotNull(account);
 		assertTrue(account instanceof SavingsAccount);
 	}
 
@@ -40,34 +39,35 @@ public class CreateAccountCommandProcessorTest {
 		createAccountCommandProcessor.process(commandParts);
 
 		Account account = bank.getAccountUsingId("11112222");
-		assertNotNull(account);
 		assertTrue(account instanceof CertificateDeposit);
 	}
 
 	@Test
 	void create_command_missing_parameters_is_invalid() {
 		String[] commandParts = { "create", "checking", "12345678" };
-		createAccountCommandProcessor.process(commandParts);
+		// createAccountCommandProcessor.process(commandParts);
 
 		Account account = bank.getAccountUsingId("12345678");
-		assertNull(account);
+		assertThrows(NumberFormatException.class, () -> createAccountCommandProcessor.process(commandParts));
+		// assertNull(account);
 	}
 
 	@Test
 	void create_command_invalid_apr_format_is_invalid() {
 		String[] commandParts = { "create", "savings", "98765432", "invalidAPR" };
-		createAccountCommandProcessor.process(commandParts);
+		// createAccountCommandProcessor.process(commandParts);
 
 		Account account = bank.getAccountUsingId("98765432");
-		assertNull(account);
+		assertThrows(NumberFormatException.class, () -> createAccountCommandProcessor.process(commandParts));
+		// assertNull(account);
 	}
 
 	@Test
 	void create_command_invalid_initial_amount_for_cd_is_invalid() {
 		String[] commandParts = { "create", "cd", "11112222", "2.0", "500" };
-		createAccountCommandProcessor.process(commandParts);
+		// createAccountCommandProcessor.process(commandParts);
 
 		Account account = bank.getAccountUsingId("11112222");
-		assertNull(account);
+		assertThrows(NumberFormatException.class, () -> createAccountCommandProcessor.process(commandParts));
 	}
 }
