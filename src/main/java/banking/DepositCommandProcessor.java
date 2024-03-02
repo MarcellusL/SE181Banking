@@ -1,3 +1,5 @@
+package banking;
+
 public class DepositCommandProcessor implements CommandProcessorBase {
 	private final Bank bank;
 
@@ -21,7 +23,7 @@ public class DepositCommandProcessor implements CommandProcessorBase {
 		}
 		Account account = bank.getAccountUsingId(accountId);
 		if (account == null) {
-			throw new NullPointerException("Account not found for deposit");
+			throw new NullPointerException("banking.Account not found for deposit");
 		}
 		account.deposit(depositAmount);
 

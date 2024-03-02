@@ -1,7 +1,9 @@
-public class CertificateDeposit extends Account {
-	public CertificateDeposit(String accountID, double APR, double balance) {
+package banking;
+
+public class CheckingAccount extends Account {
+
+	public CheckingAccount(String accountID, double APR) {
 		super(accountID, APR);
-		this.balance = balance;
 
 	}
 
@@ -18,20 +20,22 @@ public class CertificateDeposit extends Account {
 	@Override
 	public void withdraw(double amount) {
 		super.withdraw(amount);
+
 	}
 
 	@Override
 	public double getAPR() {
+
 		return super.getAPR();
 	}
 
 	@Override
 	public boolean isCertificateDeposit() {
-		return true;
+		return false;
 	}
 
 	@Override
 	public double maxDepositAmount() {
-		return 0;
+		return 1000;
 	}
 }

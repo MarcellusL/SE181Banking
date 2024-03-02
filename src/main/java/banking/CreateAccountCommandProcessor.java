@@ -1,3 +1,5 @@
+package banking;
+
 public class CreateAccountCommandProcessor implements CommandProcessorBase {
 	private final Bank bank;
 
@@ -66,7 +68,7 @@ public class CreateAccountCommandProcessor implements CommandProcessorBase {
 		}
 
 		bank.addAccount(account);
-		System.out.println("Account creation successful. Account ID: " + accountId);
+		System.out.println("banking.Account creation successful. banking.Account ID: " + accountId);
 	}
 
 	private boolean isValidCDAmount(double initialAmount) {

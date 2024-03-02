@@ -1,3 +1,5 @@
+package banking;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -23,7 +25,7 @@ public class DepositCommandProcessorTest {
 		String[] commandParts = { "deposit", "12345678", "100" };
 		depositCommandProcessor.process(commandParts);
 
-		assertEquals(100, account.getBalance(), "Account should have a balance of $100");
+		assertEquals(100, account.getBalance(), "banking.Account should have a balance of $100");
 	}
 
 	@Test
