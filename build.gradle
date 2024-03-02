@@ -3,7 +3,6 @@ plugins {
     id 'idea'
     id 'jacoco'
     id 'info.solidsoft.pitest' version '1.5.2'
-    
 }
 
 group 'org.example'
