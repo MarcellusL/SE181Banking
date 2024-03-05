@@ -54,7 +54,7 @@ public class CreateAccountCommandProcessor implements CommandProcessorBase {
 			account = new CertificateDeposit(accountId, apr, initialAmount);
 			break;
 		default:
-			throw new NullPointerException("Invalid account type: " + accountType);
+			throw new IllegalArgumentException("Invalid account type: " + accountType);
 		}
 
 		bank.addAccount(account);

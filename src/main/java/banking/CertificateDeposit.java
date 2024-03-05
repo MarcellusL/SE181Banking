@@ -34,6 +34,6 @@ public class CertificateDeposit extends Account {
 
 	@Override
 	public double maxDepositAmount() {
-		return 0;
+		throw new UnsupportedOperationException("maxDepositAmount not supported for CertificateDeposit accounts.");
 	}
 }
