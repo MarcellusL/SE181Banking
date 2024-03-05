@@ -47,29 +47,24 @@ public class CreateAccountCommandProcessorTest {
 	@Test
 	void create_command_missing_parameters_is_invalid() {
 		String[] commandParts = { "create", "checking", "12345678" };
-		// createAccountCommandProcessor.process(commandParts);
 
-		Account account = bank.getAccountUsingId("12345678");
+		// Account account = bank.getAccountUsingId("12345678");
 		assertThrows(NumberFormatException.class, () -> createAccountCommandProcessor.process(commandParts));
-		// assertNull(account);
 	}
 
 	@Test
 	void create_command_invalid_apr_format_is_invalid() {
 		String[] commandParts = { "create", "savings", "98765432", "invalidAPR" };
-		// createAccountCommandProcessor.process(commandParts);
 
-		Account account = bank.getAccountUsingId("98765432");
+		// Account account = bank.getAccountUsingId("98765432");
 		assertThrows(NumberFormatException.class, () -> createAccountCommandProcessor.process(commandParts));
-		// assertNull(account);
 	}
 
 	@Test
 	void create_command_invalid_initial_amount_for_cd_is_invalid() {
 		String[] commandParts = { "create", "cd", "11112222", "2.0", "500" };
-		// createAccountCommandProcessor.process(commandParts);
 
-		Account account = bank.getAccountUsingId("11112222");
+		// Account account = bank.getAccountUsingId("11112222");
 		assertThrows(NumberFormatException.class, () -> createAccountCommandProcessor.process(commandParts));
 	}
 

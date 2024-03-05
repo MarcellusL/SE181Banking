@@ -55,4 +55,12 @@ public class AccountTest {
 		assertEquals(0, actual);
 	}
 
+	@Test
+	public void withdraw_amount_of_money_equal_to_current_balance() {
+		savingsAccount.deposit(500.00);
+		savingsAccount.withdraw(500.00);
+		double actual = savingsAccount.getBalance();
+		assertEquals(0, actual);
+	}
+
 }

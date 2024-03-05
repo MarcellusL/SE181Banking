@@ -4,9 +4,6 @@ import java.util.HashMap;
 
 public class Bank {
 
-	// double depositAmount = 0;
-	// double withdrawAmount = 0;
-
 	private HashMap<String, Account> accountHashMap = new HashMap<>();
 
 	public void addAccount(Account account) {

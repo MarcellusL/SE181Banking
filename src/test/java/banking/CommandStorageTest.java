@@ -57,4 +57,5 @@ public class CommandStorageTest {
 		assertEquals(8, commandStorage.getInvalidCommands().size());
 
 	}
+
 }
