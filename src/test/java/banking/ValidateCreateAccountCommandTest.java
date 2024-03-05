@@ -83,10 +83,15 @@ public class ValidateCreateAccountCommandTest {
 		assertFalse(createAccountValidator.validate(commandWords));
 	}
 
-	// @Test
-	// void invalid_cd_amount_above_max_limit() {
-	// String[] commandWords = { "create", "cd", "21949684", "5.6", "10001" };
-	// assertFalse(createAccountValidator.validate(commandWords));
-	// }
+	@Test
+	void invalid_cd_amount_above_max_limit() {
+		String[] commandWords = { "create", "cd", "21949684", "5.6", "10001" };
+		assertFalse(createAccountValidator.validate(commandWords));
+	}
 
+	@Test
+	void invalid_cd_apr_and_amount() {
+		String[] commandWords = { "create", "cd", "62123592", "0.001", "10.1" };
+		assertFalse(createAccountValidator.validate(commandWords));
+	}
 }

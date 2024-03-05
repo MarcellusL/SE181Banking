@@ -17,7 +17,9 @@ public abstract class Account {
 	}
 
 	public void withdraw(double amount) {
-		if (amount > balance) {
+		// changed this to greater than or equal to check if it's the reason for the
+		// mutant survival
+		if (amount >= balance) {
 			balance = 0.00;
 		} else {
 			balance -= amount;

@@ -1,6 +1,7 @@
 package banking;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -49,6 +50,11 @@ public class SavingsAccountsTest {
 		savingsAccount.withdraw(1);
 		assertEquals(332, savingsAccount.getBalance());
 
+	}
+
+	@Test
+	void valid_check_for_not_cd() {
+		assertFalse(savingsAccount.isCertificateDeposit());
 	}
 
 }

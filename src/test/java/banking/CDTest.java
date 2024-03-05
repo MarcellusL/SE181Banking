@@ -1,12 +1,13 @@
 package banking;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class CDTest {
 	CertificateDeposit certificateDeposit;
+	CheckingAccount checkingAccount;
 
 	@BeforeEach
 	void setUp() {
@@ -27,12 +28,18 @@ public class CDTest {
 		assertEquals(2000, actual);
 	}
 
-	// @Test
-	// public void invalid_cd_account() {
-	// CertificateDeposit certificateDeposit = new CertificateDeposit("54219999",
-	// 10, 21020);
-	// boolean booleanOfCD = certificateDeposit.isCertificateDeposit();
-	// assertFalse(booleanOfCD);
+	@Test
+	public void valid_cd_account() {
+		CertificateDeposit certificateDeposit = new CertificateDeposit("54219999", 10, 21020);
+		boolean booleanOfCD = certificateDeposit.isCertificateDeposit();
+		assertTrue(booleanOfCD);
 
-	// }
+	}
+
+	@Test
+	public void invalid_cd_account() {
+		CheckingAccount checkingAccount = new CheckingAccount("50437777", 10);
+		boolean booleanOfChecking = checkingAccount.isCertificateDeposit();
+		assertFalse(booleanOfChecking);
+	}
 }

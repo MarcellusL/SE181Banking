@@ -1,6 +1,7 @@
 package banking;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -60,6 +61,11 @@ public class CheckingAccountTest {
 	@Test
 	void supplied_apr_value() {
 		assertEquals(7.9, checkingAccount.getAPR());
+	}
+
+	@Test
+	void valid_check_for_not_cd() {
+		assertFalse(checkingAccount.isCertificateDeposit());
 	}
 
 }

@@ -4,6 +4,7 @@ public class DepositCommandProcessor implements CommandProcessorBase {
 	private final Bank bank;
 
 	public DepositCommandProcessor(Bank bank) {
+
 		this.bank = bank;
 	}
 
@@ -27,7 +28,5 @@ public class DepositCommandProcessor implements CommandProcessorBase {
 		}
 		account.deposit(depositAmount);
 
-		// System.out.println("Deposit successful. New Balance: " +
-		// account.getBalance());
 	}
 }
