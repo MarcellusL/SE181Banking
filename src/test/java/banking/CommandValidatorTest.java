@@ -44,7 +44,6 @@ public class CommandValidatorTest {
 		assertTrue(commandValidator.validate(command));
 	}
 
-	// new code that was never pushed/committed
 	@Test
 	void invalid_deposit_command_more_than_three_inputs() {
 		checkingAccount = new CheckingAccount("87654321", 1.5);
