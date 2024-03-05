@@ -27,6 +27,7 @@ public class DepositCommandProcessor implements CommandProcessorBase {
 		}
 		account.deposit(depositAmount);
 
-		System.out.println("Deposit successful. New Balance: " + account.getBalance());
+		// System.out.println("Deposit successful. New Balance: " +
+		// account.getBalance());
 	}
 }

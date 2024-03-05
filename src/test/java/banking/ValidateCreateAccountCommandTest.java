@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class ValidateCreateAccountCommandTest {
+
 	private ValidateCreateAccountCommand createAccountValidator;
 	private Bank bank;
 
@@ -75,5 +76,17 @@ public class ValidateCreateAccountCommandTest {
 		String[] commandWords = { "create", "savings", "12369" };
 		assertFalse(createAccountValidator.validate(commandWords));
 	}
-	//
+
+	@Test
+	void invalid_apr_above_max_limit() {
+		String[] commandWords = { "create", "checking", "19496092", "21.6" };
+		assertFalse(createAccountValidator.validate(commandWords));
+	}
+
+	// @Test
+	// void invalid_cd_amount_above_max_limit() {
+	// String[] commandWords = { "create", "cd", "21949684", "5.6", "10001" };
+	// assertFalse(createAccountValidator.validate(commandWords));
+	// }
+
 }

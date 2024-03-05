@@ -46,4 +46,13 @@ public class AccountTest {
 		assertEquals(0, actual);
 
 	}
+
+	@Test
+	public void withdraw_amount_start_with_negative_balance_to_get_0() {
+		CertificateDeposit certificateDeposit = new CertificateDeposit("30549780", 2.0, -1100);
+		certificateDeposit.withdraw(100);
+		double actual = certificateDeposit.getBalance();
+		assertEquals(0, actual);
+	}
+
 }

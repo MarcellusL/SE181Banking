@@ -2,8 +2,6 @@ package banking;
 
 public class ValidateCreateAccountCommand extends CommandValidator {
 
-	// private banking.Bank bank;
-
 	public ValidateCreateAccountCommand(Bank bank) {
 
 		super(bank);

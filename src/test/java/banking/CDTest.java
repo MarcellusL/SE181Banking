@@ -26,4 +26,13 @@ public class CDTest {
 		double actual = certificateDeposit.getBalance();
 		assertEquals(2000, actual);
 	}
+
+	// @Test
+	// public void invalid_cd_account() {
+	// CertificateDeposit certificateDeposit = new CertificateDeposit("54219999",
+	// 10, 21020);
+	// boolean booleanOfCD = certificateDeposit.isCertificateDeposit();
+	// assertFalse(booleanOfCD);
+
+	// }
 }

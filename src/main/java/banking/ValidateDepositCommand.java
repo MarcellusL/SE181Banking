@@ -1,7 +1,6 @@
 package banking;
 
 public class ValidateDepositCommand extends CommandValidator {
-	// private banking.Bank bank;
 
 	public ValidateDepositCommand(Bank bank) {
 

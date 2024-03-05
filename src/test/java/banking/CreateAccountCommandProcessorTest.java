@@ -72,4 +72,11 @@ public class CreateAccountCommandProcessorTest {
 		Account account = bank.getAccountUsingId("11112222");
 		assertThrows(NumberFormatException.class, () -> createAccountCommandProcessor.process(commandParts));
 	}
+
+	// @Test
+	// void invalid_account_type_throws_exception() {
+	// String[] commandParts = { "create", "MARCUS", "11112202", "2.0", "500" };
+	// assertThrows(NumberFormatException.class, () ->
+	// createAccountCommandProcessor.process(commandParts));
+	// }
 }
