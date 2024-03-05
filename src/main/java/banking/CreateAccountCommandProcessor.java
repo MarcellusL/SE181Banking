@@ -60,7 +60,7 @@ public class CreateAccountCommandProcessor implements CommandProcessorBase {
 		bank.addAccount(account);
 	}
 
-	private boolean isValidCDAmount(double initialAmount) {
+	boolean isValidCDAmount(double initialAmount) {
 		return initialAmount >= 1000 && initialAmount <= 10000;
 	}
 }

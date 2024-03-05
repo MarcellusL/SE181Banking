@@ -1,7 +1,6 @@
 package banking;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -72,5 +71,20 @@ public class CreateAccountCommandProcessorTest {
 	void invalid_account_type_throws_exception() {
 		String[] commandParts = { "create", "MARCUS", "11112202", "2.0", "500" };
 		assertThrows(NumberFormatException.class, () -> createAccountCommandProcessor.process(commandParts));
+	}
+
+	@Test
+	void invalid_cd_amount() {
+		assertFalse(createAccountCommandProcessor.isValidCDAmount(12500));
+	}
+
+	@Test
+	void valid_cd_amount() {
+		assertTrue(createAccountCommandProcessor.isValidCDAmount(5000));
+	}
+
+	@Test
+	void valid_cd_amount_equal_to_1000() {
+		assertTrue(createAccountCommandProcessor.isValidCDAmount(1000));
 	}
 }
