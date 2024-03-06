@@ -19,6 +19,7 @@ public class ValidateDepositCommandTest {
 		validateDepositCommand = new ValidateDepositCommand(bank);
 		checkingAccount = new CheckingAccount("12049502", 2.0);
 		savingsAccount = new SavingsAccount("20496045", 1.0);
+
 	}
 
 	@Test
@@ -75,6 +76,20 @@ public class ValidateDepositCommandTest {
 	void invalid_no_amount_to_deposit_into_savings_given() {
 		bank.addAccount(savingsAccount);
 		String[] commandWords = { "deposit", "20496045", "" };
+		assertFalse(validateDepositCommand.validate(commandWords));
+	}
+
+	@Test
+	void invalid_deposit_into_certificate_deposit_account() {
+		certificateDeposit = new CertificateDeposit("30549684", 2.0, 1200);
+		bank.addAccount(certificateDeposit);
+		String[] commandWords = { "deposit", "30549684", "1000" };
+		assertFalse(validateDepositCommand.validate(commandWords));
+	}
+
+	@Test
+	void invalid_no_account_found() {
+		String[] commandWords = { "deposit", "123456", "500" };
 		assertFalse(validateDepositCommand.validate(commandWords));
 	}
 }
