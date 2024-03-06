@@ -36,6 +36,18 @@ public class ValidateCreateAccountCommandTest {
 	}
 
 	@Test
+	void valid_cd_account_min_amount() {
+		String[] commandWords = { "create", "cd", "39514324", "0.4", "1000" };
+		assertTrue(createAccountValidator.validate(commandWords));
+	}
+
+	@Test
+	void valid_cd_account_max_amount() {
+		String[] commandWords = { "create", "cd", "48504313", "0.4", "10000" };
+		assertTrue(createAccountValidator.validate(commandWords));
+	}
+
+	@Test
 	void invalid_checking_account_missing_account_id() {
 		String[] commandWords = { "create", "savings", "", "2.0" };
 		assertFalse(createAccountValidator.validate(commandWords));
@@ -66,13 +78,13 @@ public class ValidateCreateAccountCommandTest {
 	}
 
 	@Test
-	void invalid_checking_account_id_more_than_8() {
+	void invalid_checking_account_id_more_than_8_digits() {
 		String[] commandWords = { "create", "checking", "120495023", "3.0" };
 		assertFalse(createAccountValidator.validate(commandWords));
 	}
 
 	@Test
-	void invalid_savings_account_id_less_than_8() {
+	void invalid_savings_account_id_less_than_8_digits() {
 		String[] commandWords = { "create", "savings", "12369" };
 		assertFalse(createAccountValidator.validate(commandWords));
 	}
@@ -93,5 +105,29 @@ public class ValidateCreateAccountCommandTest {
 	void invalid_cd_apr_and_amount() {
 		String[] commandWords = { "create", "cd", "62123592", "0.001", "10.1" };
 		assertFalse(createAccountValidator.validate(commandWords));
+	}
+
+	@Test
+	void invalid_checking_account_invalid_apr() {
+		String[] commandWords = { "create", "checking", "22355619", "invalid" };
+		assertFalse(createAccountValidator.validate(commandWords));
+	}
+
+	@Test
+	void invalid_cd_account_invalid_apr() {
+		String[] commandWords = { "create", "cd", "39504301", "invalid", "2000" };
+		assertFalse(createAccountValidator.validate(commandWords));
+	}
+
+	@Test
+	void invalid_cd_account_invalid_initial_amount() {
+		String[] commandWords = { "create", "cd", "29514303", "0.4", "invalid" };
+		assertFalse(createAccountValidator.validate(commandWords));
+	}
+
+	@Test
+	void valid_checking_account_max_apr() {
+		String[] commandWords = { "create", "checking", "22389679", "10" };
+		assertTrue(createAccountValidator.validate(commandWords));
 	}
 }
