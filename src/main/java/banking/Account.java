@@ -40,5 +40,7 @@ public abstract class Account {
 
 	public abstract boolean isCertificateDeposit();
 
+	public abstract boolean accountTypeWithdrawalAmount(double amount);
+
 	public abstract double maxDepositAmount();
 }

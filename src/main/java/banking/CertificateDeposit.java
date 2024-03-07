@@ -33,6 +33,14 @@ public class CertificateDeposit extends Account {
 	}
 
 	@Override
+	// false is return because for CD has a special rule for withdrawals that will
+	// need a
+	// pass time function implementation.
+	public boolean accountTypeWithdrawalAmount(double amount) {
+		return false;
+	}
+
+	@Override
 	public double maxDepositAmount() {
 		throw new UnsupportedOperationException("maxDepositAmount not supported for CertificateDeposit accounts.");
 	}

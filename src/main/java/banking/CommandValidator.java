@@ -22,6 +22,9 @@ public class CommandValidator {
 		case "deposit":
 			return new ValidateDepositCommand(bank).validate(words);
 
+		case "withdraw":
+			return new ValidateWithdrawCommand(bank).validate(words);
+
 		default:
 			return false;
 		}

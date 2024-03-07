@@ -27,6 +27,11 @@ public class SavingsAccount extends Account {
 	}
 
 	@Override
+	public boolean accountTypeWithdrawalAmount(double amount) {
+		return amount <= 1000 && amount <= getBalance();
+	}
+
+	@Override
 	public double maxDepositAmount() {
 		return 2500;
 	}

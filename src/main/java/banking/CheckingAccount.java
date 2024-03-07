@@ -35,6 +35,11 @@ public class CheckingAccount extends Account {
 	}
 
 	@Override
+	public boolean accountTypeWithdrawalAmount(double amount) {
+		return amount <= 400 && amount <= getBalance();
+	}
+
+	@Override
 	public double maxDepositAmount() {
 		return 1000;
 	}
