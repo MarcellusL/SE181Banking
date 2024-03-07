@@ -142,5 +142,5 @@ public class ValidateCreateAccountCommandTest {
 		String[] commandWords = { "create", "cd", "17862679", "15.0", "2000" };
 		assertFalse(createAccountValidator.validate(commandWords));
 	}
-
+//
 }
