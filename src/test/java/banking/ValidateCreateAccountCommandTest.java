@@ -130,4 +130,17 @@ public class ValidateCreateAccountCommandTest {
 		String[] commandWords = { "create", "checking", "22389679", "10" };
 		assertTrue(createAccountValidator.validate(commandWords));
 	}
+
+	@Test
+	void invalid_apr_above_max_limit_in_checking() {
+		String[] commandWords = { "create", "checking", "17862678", "15.0" };
+		assertFalse(createAccountValidator.validate(commandWords));
+	}
+
+	@Test
+	void invalid_apr_above_max_limit_in_certificate_deposit() {
+		String[] commandWords = { "create", "cd", "17862679", "15.0", "2000" };
+		assertFalse(createAccountValidator.validate(commandWords));
+	}
+
 }
