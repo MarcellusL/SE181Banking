@@ -4,7 +4,6 @@ public class CheckingAccount extends Account {
 
 	public CheckingAccount(String accountID, double APR) {
 		super(accountID, APR);
-
 	}
 
 	@Override

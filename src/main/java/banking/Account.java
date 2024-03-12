@@ -26,6 +26,11 @@ public abstract class Account {
 		}
 	}
 
+	public void accrueAPR() {
+		double monthlyAPR = (apr / 100) / 12;
+		balance += balance * monthlyAPR;
+	}
+
 	public double getBalance() {
 		return balance;
 	}
