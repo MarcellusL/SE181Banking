@@ -25,6 +25,9 @@ public class CommandValidator {
 		case "withdraw":
 			return new ValidateWithdrawCommand(bank).validate(words);
 
+		case "pass":
+			return new ValidatePassTimeCommand(bank).validate(words);
+
 		default:
 			return false;
 		}

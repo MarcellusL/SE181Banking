@@ -23,6 +23,10 @@ public class ValidateWithdrawCommand extends CommandValidator {
 		if (account == null) {
 			return false;
 		}
-		return account.accountTypeWithdrawalAmount(withdrawAmount);
+		if (!account.accountTypeWithdrawalAmount(withdrawAmount)) {
+			return false;
+		}
+		return true;
 	}
+
 }

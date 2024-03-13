@@ -1,6 +1,9 @@
 package banking;
 
 public class CertificateDeposit extends Account {
+	private static final int MONTH_WAITING_PERIOD = 12;
+	private boolean withdrawalAllowed;
+
 	public CertificateDeposit(String accountID, double APR, double balance) {
 		super(accountID, APR);
 		this.balance = balance;
@@ -33,15 +36,19 @@ public class CertificateDeposit extends Account {
 	}
 
 	@Override
-	// false is return because for CD has a special rule for withdrawals that will
-	// need a
-	// pass time function implementation.
 	public boolean accountTypeWithdrawalAmount(double amount) {
-		return false;
+		return withdrawalAllowed && amount >= balance;
 	}
 
 	@Override
 	public double maxDepositAmount() {
 		throw new UnsupportedOperationException("maxDepositAmount not supported for CertificateDeposit accounts.");
+	}
+
+	@Override
+	public void passTime(int months) {
+		if (months >= MONTH_WAITING_PERIOD) {
+			withdrawalAllowed = true;
+		}
 	}
 }

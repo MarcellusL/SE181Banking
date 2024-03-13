@@ -29,6 +29,11 @@ public class CheckingAccount extends Account {
 	}
 
 	@Override
+	public void passTime(int months) {
+		// Nothing atm 🫤
+	}
+
+	@Override
 	public boolean isCertificateDeposit() {
 		return false;
 	}

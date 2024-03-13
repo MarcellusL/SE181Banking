@@ -32,7 +32,6 @@ public class ValidateWithdrawCommandTest {
 	@Test
 	void valid_withdraw_zero_from_checking() {
 		bank.addAccount(checkingAccount);
-		checkingAccount.deposit(666);
 		String[] commandWords = { "withdraw", "66699922", "0" };
 		assertTrue(validateWithdrawCommand.validate(commandWords));
 	}
@@ -40,7 +39,6 @@ public class ValidateWithdrawCommandTest {
 	@Test
 	void valid_wtihdraw_zero_from_savings() {
 		bank.addAccount(savingsAccount);
-		savingsAccount.deposit(800);
 		String[] commandWords = { "withdraw", "22999666", "0" };
 		assertTrue(validateWithdrawCommand.validate(commandWords));
 	}
@@ -48,7 +46,6 @@ public class ValidateWithdrawCommandTest {
 	@Test
 	void valid_withdraw_from_savings_within_limit() {
 		bank.addAccount(savingsAccount);
-		savingsAccount.deposit(1050);
 		String[] commandWords = { "withdraw", "22999666", "350" };
 		assertTrue(validateWithdrawCommand.validate(commandWords));
 	}
@@ -64,7 +61,6 @@ public class ValidateWithdrawCommandTest {
 	@Test
 	void invalid_withdraw_from_savings_above_limit() {
 		bank.addAccount(savingsAccount);
-		savingsAccount.deposit(1500);
 		String[] commandWords = { "withdraw", "22999666", "1200.99" };
 		assertFalse(validateWithdrawCommand.validate(commandWords));
 	}
@@ -72,7 +68,7 @@ public class ValidateWithdrawCommandTest {
 	@Test
 	void invalid_withdraw_from_checking_above_limit() {
 		bank.addAccount(checkingAccount);
-		checkingAccount.deposit(800);
+
 		String[] commandWords = { "withdraw", "66699922", "500" };
 		assertFalse(validateWithdrawCommand.validate(commandWords));
 	}

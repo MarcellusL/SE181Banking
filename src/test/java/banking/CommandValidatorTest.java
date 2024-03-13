@@ -51,4 +51,12 @@ public class CommandValidatorTest {
 		String command = "deposit 87654321 100 200";
 		assertFalse(commandValidator.validate(command));
 	}
+
+	@Test
+	void invalid_id_for_checking() {
+		checkingAccount = new CheckingAccount("87654321", 1.5);
+		bank.addAccount(checkingAccount);
+		String command = "deposit 8765432154985438543754785748357457397598 100 200";
+		assertFalse(commandValidator.validate(command));
+	}
 }

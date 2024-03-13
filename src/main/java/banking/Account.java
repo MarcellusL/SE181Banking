@@ -17,8 +17,6 @@ public abstract class Account {
 	}
 
 	public void withdraw(double amount) {
-		// changed this to greater than or equal to check if it's the reason for the
-		// mutant survival
 		if (amount > balance) {
 			balance = 0.00;
 		} else {
@@ -48,4 +46,6 @@ public abstract class Account {
 	public abstract boolean accountTypeWithdrawalAmount(double amount);
 
 	public abstract double maxDepositAmount();
+
+	public abstract void passTime(int months);
 }
