@@ -19,6 +19,10 @@ public class ValidateWithdrawCommand extends CommandValidator {
 			return false;
 		}
 
+		if (withdrawAmount < 0) {
+			return false; // Withdrawal amount cannot be negative
+		}
+
 		Account account = getBank().getAccountUsingId(accountId);
 		if (account == null) {
 			return false;
@@ -28,5 +32,4 @@ public class ValidateWithdrawCommand extends CommandValidator {
 		}
 		return true;
 	}
-
 }

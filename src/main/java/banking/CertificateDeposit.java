@@ -51,4 +51,9 @@ public class CertificateDeposit extends Account {
 			withdrawalAllowed = true;
 		}
 	}
+
+	// Created to test the pass time in CDTest
+	public int getMonthWaitingPeriod() {
+		return MONTH_WAITING_PERIOD;
+	}
 }

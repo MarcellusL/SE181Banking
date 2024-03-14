@@ -33,7 +33,20 @@ public class CDTest {
 		CertificateDeposit certificateDeposit = new CertificateDeposit("54219999", 10, 21020);
 		boolean booleanOfCD = certificateDeposit.isCertificateDeposit();
 		assertTrue(booleanOfCD);
+	}
 
+	@Test
+	public void waiting_period_expiration() {
+		CertificateDeposit certificateDeposit = new CertificateDeposit("58432502", 0.15, 1000);
+		certificateDeposit.passTime(certificateDeposit.getMonthWaitingPeriod());
+		assertTrue(certificateDeposit.accountTypeWithdrawalAmount(1000));
+	}
+
+	@Test
+	public void valid_withdrawal_after_waiting_period() {
+		CertificateDeposit certificateDeposit = new CertificateDeposit("12345678", 0.15, 1000);
+		certificateDeposit.passTime(certificateDeposit.getMonthWaitingPeriod() + 1);
+		assertTrue(certificateDeposit.accountTypeWithdrawalAmount(1000));
 	}
 
 	@Test
@@ -41,5 +54,24 @@ public class CDTest {
 		CheckingAccount checkingAccount = new CheckingAccount("50437777", 10);
 		boolean booleanOfChecking = checkingAccount.isCertificateDeposit();
 		assertFalse(booleanOfChecking);
+	}
+
+	@Test
+	public void invalid_withdrawal_before_waiting_period() {
+		CertificateDeposit certificateDeposit = new CertificateDeposit("12345678", 0.15, 1000);
+		assertFalse(certificateDeposit.accountTypeWithdrawalAmount(1000)); // Withdrawal should not be allowed
+	}
+
+	@Test
+	public void invalid_deposit_negative_amount() {
+		CertificateDeposit certificateDeposit = new CertificateDeposit("10001000", 0.15, 1000);
+		certificateDeposit.deposit(-500);
+		assertEquals(1000, certificateDeposit.getBalance()); // Balance should remain unchanged
+	}
+
+	@Test
+	public void invalid_withdrawal_negative_amount() {
+		CertificateDeposit certificateDeposit = new CertificateDeposit("87654321", 0.15, 1000);
+		assertFalse(certificateDeposit.accountTypeWithdrawalAmount(-500)); // Withdrawal should not be allowed
 	}
 }

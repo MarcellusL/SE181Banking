@@ -37,6 +37,14 @@ public class ValidateWithdrawCommandTest {
 	}
 
 	@Test
+	void valid_withdraw_from_savings_exceeding_limit() {
+		bank.addAccount(savingsAccount);
+		savingsAccount.deposit(500); // Deposit some amount
+		String[] commandWords = { "withdraw", "22999666", "501" }; // Try to withdraw more than the limit
+		assertTrue(validateWithdrawCommand.validate(commandWords));
+	}
+
+	@Test
 	void valid_wtihdraw_zero_from_savings() {
 		bank.addAccount(savingsAccount);
 		String[] commandWords = { "withdraw", "22999666", "0" };
@@ -76,6 +84,34 @@ public class ValidateWithdrawCommandTest {
 	@Test
 	void invalid_withdraw_negative_amount() {
 		String[] commandWords = { "withdraw", "12345678", "-50" };
+		assertFalse(validateWithdrawCommand.validate(commandWords));
+	}
+
+	@Test
+	void invalid_withdraw_from_checking_insufficient_balance() {
+		bank.addAccount(checkingAccount);
+		checkingAccount.deposit(100); // Deposit some amount
+		String[] commandWords = { "withdraw", "66699922", "200" }; // Try to withdraw more than the balance
+		assertFalse(validateWithdrawCommand.validate(commandWords));
+	}
+
+	@Test
+	void invalid_withdraw_negative_amount_savings() {
+		bank.addAccount(savingsAccount);
+		savingsAccount.deposit(500); // Deposit some amount
+		String[] commandWords = { "withdraw", "22999666", "-50" }; // Try to withdraw a negative amount
+		assertFalse(validateWithdrawCommand.validate(commandWords));
+	}
+
+	@Test
+	void invalid_withdraw_from_non_existing_account() {
+		String[] commandWords = { "withdraw", "99999999", "100" }; // Try to withdraw from a non-existing account
+		assertFalse(validateWithdrawCommand.validate(commandWords));
+	}
+
+	@Test
+	void invalid_withdraw_command_syntax() {
+		String[] commandWords = { "withdraw", "12345678", "" }; // Missing withdrawal amount
 		assertFalse(validateWithdrawCommand.validate(commandWords));
 	}
 
