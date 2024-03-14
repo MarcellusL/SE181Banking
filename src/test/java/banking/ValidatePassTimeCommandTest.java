@@ -1,7 +1,6 @@
 package banking;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -56,6 +55,32 @@ public class ValidatePassTimeCommandTest {
 	void invalid_pass_time_command_invalid_input_using_emoji() {
 		String[] commandWords = { "😂", "1" };
 		assertFalse(validatePassTimeCommand.validate(commandWords));
+	}
+
+	@Test
+	void invalid_pass_time_command_extra_parameter() {
+		String[] invalidMonths1 = { "pass", "0" };
+		assertFalse(validatePassTimeCommand.validate(invalidMonths1));
+	}
+
+	@Test
+	void invalid_pass_time_invalid_month() {
+		String[] invalidMonths2 = { "pass", "100" };
+		assertFalse(validatePassTimeCommand.validate(invalidMonths2));
+	}
+
+	@Test
+	void invalid_pass_non_integer_for_months() {
+		String[] invalidMonths3 = { "pass", "invalidMonth" };
+		assertFalse(validatePassTimeCommand.validate(invalidMonths3));
+	}
+
+	@Test
+	void invalid_pass_time_command_bank_not_initialized() {
+		ValidatePassTimeCommand validatePassTimeCommand = new ValidatePassTimeCommand(null);
+		String[] commandWords = { "pass", "12" };
+		assertTrue(validatePassTimeCommand.validate(commandWords));
+		assertThrows(IllegalStateException.class, () -> validatePassTimeCommand.executePassTime(12));
 	}
 
 }
