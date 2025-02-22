@@ -1,0 +1,18 @@
+# Gradle
+.gradle/
+build/
+
+# IntelliJ
+.idea/
+*.iml
+
+# Compiled files
+*.class
+out/
+
+# Gradle wrapper
+!gradle-wrapper.jar
+!gradle-wrapper.properties
+
+# Log files
+*.log
